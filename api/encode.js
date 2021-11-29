@@ -1,5 +1,10 @@
 function encode(req, res) {
-    res.send(Buffer.from(req.query["q"]).toString("base64"));
+    const query = req.query["q"];
+    if (!query) {
+        return res.send("s");
+    }
+    
+    res.send(Buffer.from(query).toString("base64"));
 }
 
 module.exports = encode;
